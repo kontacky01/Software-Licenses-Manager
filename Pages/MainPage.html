@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="Pages.css">
+  </head>
+  <body>
+    <div class="container">
+      <!-- Tabs Detail -->
+      <div class="tabs">
+        <span data-tab-value="#Home">Home</span>
+        <span data-tab-value="#PotentialTab2">PotentialTab2</span>
+        <span data-tab-value="#PotentialTab3">PotentialTab3</span>
+        <span data-tab-value="#Login">Log in</span>
+      </div>
+      <!-- Tab content -->
+      <div class="tab-content">
+        <div class="tabs__tab active" id="Home" data-tab-info>
+          <p>
+            Welcome to the Software Licenses' Manager Platform. Managing software licenses might become cumbersome for both software users and providers.<br>
+            Our objective is to provide a platform that helps providers and clients in managing their 
+            licenses easily and securely. We mainly prioritize generating, safely storing, checking, and 
+            enforcing valide and legitimate of licenses.
+          </p>
+        </div>
+        <div class="tabs__tab" id="PotentialTab2" data-tab-info>
+          <p>This is where we can put content for another page.</p>
+        </div>
+        <div class="tabs__tab" id="PotentialTab3" data-tab-info>
+          <p>This is where we can put even more content for even another page.</p>
+        </div>
+        <div class="tabs__tab" id="Login" data-tab-info>
+          <h1>Software Licenses' Manager</h1><br><br><br>
+          <form id="LogInForm" action="LogIn.js" method="post">
+            <label class="LogInLabels" for="email"> Email:</label><br>
+            <input type="email" id="email" name="Email" placeholder="daniel@hotmail.com"><br>
+            <label class="LogInLabels" for="password"> Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit" id="LogInButton" value="Submit">Log in</button><br><br><br>
+            <p>___________________OR___________________</p><br><br><br><br>
+            <p>
+              Don't have an account?
+              <a href="SignUpPage.html">
+                <button type="button" id="SignUpButton">Sign up</button><br><br><br>
+              </a>
+            </p>
+          </form>
+        </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+       
+      // function to get each tab details
+      const tabs = document.querySelectorAll('[data-tab-value]')
+      const tabInfos = document.querySelectorAll('[data-tab-info]')
+
+      tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+              const target = document
+                  .querySelector(tab.dataset.tabValue);
+              tabInfos.forEach(tabInfo => {
+                  tabInfo.classList.remove('active')
+              })
+              target.classList.add('active');
+          })
+      })
+  </script>
+  </body>
+</html>
