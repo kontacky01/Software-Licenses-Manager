@@ -67,6 +67,9 @@ function renewLicense() {
   
     // Hide the "Renew License" button
     document.getElementById('renewlicense').hidden = true;
+
+    // Show the "Cancel license button"
+    document.getElementById('cancellicense').hidden = false;
 }
 /**
  * this function updates the expiry date of a software to whatever today's date as an indication of its cancellation
@@ -82,8 +85,62 @@ function cancelLicense() {
     // Update the "expirydate" in the table
     selectedRow.cells[5].textContent = currentDate;
   
-    // Hide the "Renew License" button
+    // Hide the "Cancel License" button
     document.getElementById('cancellicense').hidden = true;
+
+    // Show the "Renew license button"
+    document.getElementById('renewlicense').hidden = false;
+}
+/**
+ * this function blocks the client when a user clicks block client button and sets the client's status to blocked
+ */
+function blockClient() {
+
+    var table = document.getElementById("clientsTable");
+    var selectedRow = table.rows[currentSelectedRow + 1];
+    // update status of client in the table
+    selectedRow.cells[7].textContent = "Blocked";
+
+    document.getElementById("blockclient").hidden = true;
+    
+    document.getElementById("unblockclient").hidden = false;
+  }
+/**
+ * this function unblocks the client when a user clicks unblock client button  and sets the client's status to active
+ */
+  function unblockClient() {
+
+    var table = document.getElementById("clientsTable");
+    var selectedRow = table.rows[currentSelectedRow + 1];
+
+    // update status of client in the table
+    selectedRow.cells[7].textContent = "Active";
+
+    document.getElementById("unblockclient").hidden = true;
+
+    document.getElementById("blockclient").hidden = false;
+  }    
+/**
+ * this function helps filter the clients table given what the user is typing in the search box
+ */
+function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("clientsTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1] ;
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            }
+            else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }
 /**
  * this function  gets details of the provider who is currently logged in
@@ -112,59 +169,13 @@ function populateProviderForm() {
             document.getElementById("provideraddress").disabled = false;
             document.getElementById("providerphonenumber").disabled = false;
             document.getElementById("provideremail").disabled = false;
-
+            
+            //redirect to main page of the website once the user has been authenticated
+            //window.location.href = "MainPage.html";
+            //window.location.assign("file:///C:/Users/konta/OneDrive/Desktop/SOEN%20287/Software-Licenses-Manager/Provider/MainPage.html");
+            
             // Break the loop since a match has been found
             break;
-        }
-    }
-}
-/**
- * this function blocks the client when a user clicks block client button and sets the client's status to blocked
- */
-function blockClient() {
-    var clientStatus = document.querySelector('#clientsTable tr.selected td:nth-child(6)');
-    if (clientStatus) {
-      clientStatus.textContent = "Blocked";
-    }
-    var blockClientButton = document.getElementById("blockclient");
-    blockClientButton.style.display = "none";
-
-    var unblockClientButton = document.getElementById("unblockclient");
-    unblockClientButton.style.display = "inline";
-  }
-/**
- * this function unblocks the client when a user clicks unblock client button  and sets the client's status to active
- */
-  function unblockClient() {
-    var clientStatus = document.querySelector('#clientsTable tr.selected td:nth-child(8)');
-    if (clientStatus) {
-      clientStatus.textContent = "Active";
-    }
-    var blockClientButton = document.getElementById("unblockclient");
-    blockClientButton.style.display = "none";
-
-    var unblockClientButton = document.getElementById("blockclient");
-    unblockClientButton.style.display = "inline";
-  }    
-/**
- * this function helps filter the clients table given what the user is typing in the search box
- */
-function myFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("clientsTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1] ;
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            }
-            else {
-                tr[i].style.display = "none";
-            }
         }
     }
 }

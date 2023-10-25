@@ -11,9 +11,8 @@
       <!-- Tabs Detail -->
       <div class="tabs">
         <span data-tab-value="#Home">Home</span>
-        <span data-tab-value="#IssueLicense">Issue License</span>
         <span data-tab-value="#Clients">Clients</span>
-        <span data-tab-value="#Login">Log in</span>
+        <span data-tab-value="#IssueLicense">Issue License</span>
         <span data-tab-value="#MyAccount">My account</span>
       </div>
       <!-- Tab content -->
@@ -27,14 +26,6 @@
             enforcing valide and legitimate of licenses.
           </p>
         </div>
-<!-------------------------------------------Issue License tab content--------------------------------------------------->
-<div class="tabs__tab active" id="IssueLicense" data-tab-info>
-  <p>
-    You can issue a client a license to use one of your softwares here.
-    Please fill in the needed details and press the button "Issue License".
-    <button id="issuelicense" type="button" hidden="hidden">Issue license</button>
-  </p>
-</div>
 <!-----------------------------------------------Clients Tab content----------------------------------------------------->
         <div class="tabs__tab" id="Clients" data-tab-info>
 
@@ -110,82 +101,20 @@
               <button onclick="cancelLicense()" id="cancellicense" type="button" hidden="hidden">Cancel license</button>
           </form>
         </div>
-<!-----------------------------------------------Login Tab content------------------------------------------------------->
-        <div class="tabs__tab" id="Login" data-tab-info>
-
-          <h1>Software Licenses' Manager</h1><br><br><br>
-
-          <form id="LogInForm" action="Pages.js" method="post">
-            <label class="LogInLabels" for="email"> Email:</label><br>
-            <input type="email" id="logInEmail" name="Email" required placeholder="daniel@hotmail.com"><br>
-
-            <label class="LogInLabels" for="password"> Password:</label><br>
-            <input type="password" id="logInPassword" name="password" required><br><br>
-
-            <button onclick="populateProviderForm()" type="button" id="LogInButton" value="Submit">Log in</button><br><br><br>
-            <p>___________________OR___________________</p><br><br><br><br>
-            <p>
-              Don't have an account?
-              <a href="SignUpPage.html">
-                <button type="button" id="SignUpButton">Sign up</button><br><br><br>
-              </a>
-            </p>
-          </form>
-
+<!-------------------------------------------Issue License tab content--------------------------------------------------->
+        <div class="tabs__tab active" id="IssueLicense" data-tab-info>
+          <p>
+            You can issue a client a license to use one of your softwares here.
+            Please fill in the needed details and press the button "Issue License".
+            <button id="issuelicense" type="button" hidden="hidden">Issue license</button>
+          </p>
         </div>
 <!--------------------------------------------Provider Account Tab content----------------------------------------------->
         <div class="tabs__tab" id="MyAccount" data-tab-info>
-
-          <!--this shouldn't be visible and this table will be in the DB for phase2-->
-          <table id="providersTable" hidden="hidden">
-            <tr>
-                <th>Company Name</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <!--<th>Software Provided</th> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-            <tr>
-                <td>Microsoft Corporation</td>
-                <td>123 Main St</td>
-                <td>555-123-4567</td>
-                <td>provider1@gmail.com</td>
-                <!--<td>Software Provided</td> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-            <tr>
-                <td>Meta Platforms Inc</td>
-                <td>456 Elm St</td>
-                <td>555-987-6543</td>
-                <td>provider2@gmail.com</td>
-                <!--<td>Software Provided</td> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-            <tr>
-                <td>Google LLC</td>
-                <td>123 Main St</td>
-                <td>555-123-4567</td>
-                <td>provider3@gmail.com</td>
-                <!--<td>Software Provided</td> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-            <tr>
-                <td>Adobe Inc</td>
-                <td>456 Elm St</td>
-                <td>555-987-6543</td>
-                <td>provider4@gmail.com</td>
-                <!--<td>Software Provided</td> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-            <tr>
-                <td>Yahoo! Inc</td>
-                <td>123 Main St</td>
-                <td>555-123-4567</td>
-                <td>provider5@gmail.com</td>
-                <!--<td>Software Provided</td> i am thinking each company has multiple software to offer so i might make this attribute a table. 2b revisited-->
-            </tr>
-          </table>
-
           <p>Below are your account details.</p><br><br><br>
           <h3> Provider Information</h3>
 
-          <form id="providerDetailsForm">
+          <form action="Pages.js" id="providerDetailsForm">
               <label for="companyname">Company Name:</label>
               <input type="text" id="companyname" name="companyname" disabled><br>
 
@@ -206,8 +135,10 @@
           
             <br>
             <input type="submit" value="Save Changes">
-          </form>
-
+          </form><br><br>
+          <a href="LogInPage.html">
+            <button type="button">Log out</button>
+          </a>
         </div>
       </div>
     </div>
