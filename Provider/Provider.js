@@ -1,1 +1,0 @@
-//put all the provider javascript code here in this file
