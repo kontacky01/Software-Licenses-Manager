@@ -1,1 +1,181 @@
-/*put all the provider css code here in this file*/
+
+#title{
+    margin:2%;
+    padding:2%;
+    background-color:lightblue;
+   }
+  /*styling for tabs*/
+  
+  /*hides the content of tabs*/
+  [data-tab-info] {
+    display: none;
+  }
+  
+  /*shows the tabs once clicked*/
+  .active[data-tab-info] {
+    display: block;
+  }
+  /*the content inside the tabs*/
+  .tab-content {
+    margin: 2%;
+    color: rgb(0, 0, 0);
+  }
+  
+  .tabs {
+        background-color: lightblue;     
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        display: flex;
+        margin: 2%;
+        padding: 1%;
+        gap: 5%;
+        
+    }
+    .tabs span {
+      background: lightblue;
+      padding: 10px;
+      
+  
+  }
+  .tabs span:hover {
+    background: rgb(184, 46, 39);
+    cursor: pointer;
+    color: black;
+  }
+  
+  
+  /*styling for client tab content in particular*/
+  
+  #myInput {
+    width: 90%; 
+    background-position: 10px 12px; 
+    padding: 1%; 
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+  }
+  #myTable {
+    border-collapse: collapse; 
+    width: 100%; 
+    border: 1px solid #ddd; 
+    overflow: scroll;
+    
+  }
+  
+  #myTable th {
+    text-align: left; 
+    padding: 1%; 
+    overflow: hidden;
+  }
+  #myTable td{
+    text-align: left; 
+    padding: 8px; 
+    overflow: hidden;
+  }
+  
+  #myTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: lightblue;
+  }
+  
+  #email {
+    background-color: lightblue; 
+    border: none;
+    color: black;
+    padding: 2%;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  #email:hover, .button:hover {
+    background: rgb(184, 46, 39);
+    cursor: pointer;
+    color: black;
+   
+    
+  }
+  #clientDetailsForm{
+    padding: 2%;
+    background-color: lightblue;
+  
+  }
+  label{
+    font-weight: bold;
+  }
+  
+  input[type=text], select, input[type=password] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    width: 80%;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: rgb(184, 46, 39);
+  }
+  
+  #info{
+    margin: 2%;
+    }
+  
+  
+  .client-select {
+    position: relative;
+    font-family: Arial;
+  }
+  
+  
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  
+  .row {margin: 0 -5px;}
+  
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  
+  @media screen and (max-width: 800px) and (max-height: 800px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  
+  #myAccount{
+    background-color: lightblue;
+  }

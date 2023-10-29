@@ -1,8 +1,178 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>My Software Licenses' Manager</title>
+    <link rel="stylesheet" href="Provider.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<body>
+  </head>
+  <body>
+    <div id="title">
+      <h1>My Software Manager</h1>
+    </div>
+    <div class="menu">
+      <!-- Tabs Detail -->
+      <div class="tabs">
+        <span data-tab-value="#Home">Home</span>
+        <span data-tab-value="#Clients">Clients</span>
+        <span data-tab-value="#IssueLicense">Issue License</span>
+        <span data-tab-value="#MyAccount">My account</span>
+        <span data-tab-value="#LogOut"> <button id="email" type="button">Log out</button></span>
+      </div>
+      <!-- Tab content -->
+      <div class="tab-content">
+<!------------------------------------------------Home Tab content------------------------------------------------------->
+        <div class="tabs__tab active" id="Home" data-tab-info>
+          <p>
+            Welcome to the Software Licenses' Manager Platform. Managing software licenses might become cumbersome for both software users and providers.<br>
+            Our objective is to provide a platform that helps providers and clients in managing their 
+            licenses easily and securely. We mainly prioritize generating, safely storing, checking, and 
+            enforcing valide and legitimate of licenses.
+          </p>
+        </div>
+<!-----------------------------------------------Clients Tab content----------------------------------------------------->
+        <div class="tabs__tab" id="Clients" data-tab-info>
 
-	</body>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for client.." title="Type in a name">
+          
+          <table id="myTable">
+            <tr class="header">
+              <th>Client ID</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Software</th>
+              <th>IssuedOn</th>
+              <th>ExpiresOn</th>
+              <th>Email</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td>001</td>
+              <td onclick="populateClientForm(0)">Jane Doe</a> </td>
+              <td>Montreal</td>
+              <td>Microsoft Office</td>
+              <td>Dec 24 2018</td>
+              <td>Dec 24 2019</td>
+              <td><a href="mailto:JaneDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td onclick="populateClientForm(1)">John Doe</td>
+              <td>Montreal</td>
+              <td>Adobe Acrobat</td>
+              <td>Jun 05 2020</td>
+              <td>Jun 05 2021</td>
+              <td><a href="mailto:JohnDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>003</td>
+              <td onclick="populateClientForm(2)">Sam Smith</td>
+              <td>Montreal</td>
+              <td>Microsoft Office</td>
+              <td>Mar 31 2023</td>
+              <td>Mar 31 2024</td>
+              <td><a href="mailto:SamSmith@example.com" ><button type="button" id="email">Send email</button></a></td>
+              <td>Active</td>
+            </tr>
+          </table>
+          <form action="Pages.js" id="clientDetailsForm">
+          <h3> Client Information</h3>
+          
+          
+              <label for="fullname">Full name:</label><br>
+              <input type="text" id="fullname" name="fullname"><br>
 
+              <label for="address">Address:</label><br>
+              <input type="text" id="address" name="address"><br>
+
+              <label for="email">Email:</label><br>
+              <input type="text" id="email-address" name="email-address"><br>
+
+              <label for="software">Software:</label><br>
+              <input type="text" id="software" name="software"><br>
+
+              <label for="issuedate">Issued On:</label><br>
+              <input type="text" id="issuedate" name="issuedate"><br>
+
+              <label for="expirydate">Expires On:</label><br>
+              <input type="text" id="expirydate" name="expirydate"><br>
+
+              <br>
+              <input id="button" type="submit" value="Save Changes">
+              <button onclick="blockClient()" id="blockclient" type="button" hidden="hidden">Block client</button>
+              <button onclick="unblockClient()" id="unblockclient" type="button" hidden="hidden">Unblock client</button>
+              <button onclick="renewLicense()" id="renewlicense" type="button" hidden="hidden">Renew license</button>
+              <button onclick="cancelLicense()" id="cancellicense" type="button" hidden="hidden">Cancel license</button>
+          </form>
+        </div>
+<!-------------------------------------------Issue License tab content--------------------------------------------------->
+        <div class="tabs__tab" id="IssueLicense" data-tab-info>
+          <p id="info">
+            You can issue a client a license to use one of your softwares here.
+            Please fill in the needed details and press the button "Issue License".
+          </p>
+          <div class="row">
+            <div class="column">
+              <div class="card">
+                <h3>Software 1</h3>
+                  <button id="email" type="button" >Issue license</button>
+              </div>
+            </div>
+          
+            <div class="column">
+              <div class="card">
+                <h3>Software 2</h3>
+                 <button id="email" type="button" >Issue license</button>
+              </div>
+            </div>
+            
+            <div class="column">
+              <div class="card">
+                <h3>software 3</h3>
+                  <button id="email" type="button" >Issue license</button>
+              </div>
+            </div>
+            
+            
+
+          
+        </div>
+        </div>
+<!--------------------------------------------Provider Account Tab content----------------------------------------------->
+        <div class="tabs__tab" id="MyAccount" data-tab-info>
+          <h3 id="info">Below are your account details.</h3><br/>
+          <form action="Pages.js" id="providerDetailsForm"></form>
+            <h4> Provider Information</h4>
+          
+              <label for="companyname">Company Name:</label><br/>
+              <input type="text" id="companyname" name="companyname" disabled><br>
+
+              <label for="address">Address:</label><br/>
+              <input type="text" id="provideraddress" name="address" disabled><br>
+
+              <label for="phonenumber">Phone Number:</label><br/>
+              <input type="text" id="providerphonenumber" name="phonenumber" disabled><br>
+
+              <label for="email">Email:</label><br/>
+              <input type="text" id="provideremail" name="email" disabled><br>
+
+              <label for="password">Password:</label><br/>
+              <input type="password" id="providerpassword" name="password" disabled><br>
+
+            <!-- <label for="softwareToSale">Software To Sale:</label> 2b revisited-->
+            <!-- <input type="text" id="softwareToSale" name="softwareToSale" disabled><br>2b revisite --> 
+          
+            <br/>
+            <input type="submit" value="Save Changes">
+          </form><br><br>
+
+         
+        </div>
+      </div>
+    </div>
+
+  <script src="Provider.js"></script>
+  </body>
 </html>
