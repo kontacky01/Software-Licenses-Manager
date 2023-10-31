@@ -1,0 +1,12 @@
+#resetPassword{
+    display: none;
+}
+#resetCodeEmail{
+    display: none;
+}
+#newPasswordForm{
+    display: none;
+}
+#resetSuccess{
+    display: none;
+}
