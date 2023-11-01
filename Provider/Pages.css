@@ -17,6 +17,7 @@ body {
 .container {
     border: 1px solid grey;
     margin: 1rem;
+    padding: 16px;
 }
 
 [data-tab-info] {
@@ -114,7 +115,7 @@ gap: 5%;
   }
 
   input[type=text], select, input[type=password] {
-    width: 80%;
+    width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -123,7 +124,7 @@ gap: 5%;
     box-sizing: border-box;
   }
   input[type=submit] {
-    width: 80%;
+    width: 60%;
     background-color: white;
     color: black;
     padding: 14px 20px;
@@ -195,3 +196,44 @@ gap: 5%;
   #myAccount{
     background-color: lightblue;
   }
+
+
+  #signup{
+    margin: auto;
+    margin:2%;
+    background-color: lightblue;
+    padding:2%;
+       
+  }
+
+  button {
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 350px;
+    opacity: 0.9;
+  }
+  
+ button:hover {
+    background-color: rgb(184, 46, 39);
+  }
+
+#signup2{
+  margin: auto;
+    margin:2%;
+    background-color: lightblue;
+    padding: 10px;
+    border: 1px solid grey;
+
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+

@@ -50,25 +50,29 @@
             </tr>
         </table>
 
-        
-        <h1>Software Licenses' Manager</h1><br><br><br>
-
+        <div id="title">
+            <h1>My Software Manager</h1>
+          </div >
+          <div class="container" id="signup">
         <form id="LogInForm" action="Pages.js" method="post">
             <label class="LogInLabels" for="email"> Email:</label><br>
-            <input type="email" id="logInEmail" name="Email" required placeholder="daniel@hotmail.com"><br>
+            <input type="text" id="logInEmail" name="Email" required placeholder="daniel@hotmail.com"><br>
 
             <label class="LogInLabels" for="password"> Password:</label><br>
             <input type="password" id="logInPassword" name="password" required><br><br>
             <a href="MainPage.html">
                 <button onclick="populateProviderForm()" type="button" id="LogInButton" value="Submit">Log in</button><br><br><br>
             </a>
-            <p>___________________OR___________________</p><br><br><br><br>
-            <p>
-            Don't have an account?
-            <a href="SignUpPage.html">
-                <button type="button">Sign up</button><br><br><br>
-            </a>
-            </p>
+            
+           
         </form>
+    </div>
+
+    <p id="signup2">
+        Don't have an account?
+        <a href="SignUpPage.html"> <br>
+            <button type="button">Sign up</button><br><br><br>
+        </a>
+        </p>
     </body>
 </html>
