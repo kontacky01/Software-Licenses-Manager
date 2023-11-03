@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>My Software License Manager</title>
+        <link rel="stylesheet" href="ClientMainPage.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <header>
+        <h1>Software License Manager</h1>
+    </header>
+<body>
+    <nav>
+        <a href="WelcomePage.html">
+        <button id="logoutButton" class="logout-button">Log Out</button>
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="side-menu">
+            <h2>Menu</h2>
+        <ul>
+            <li><a href="#account-summary" onclick="showContent('account-summary')">My Account</a></li>
+            <li><a href="#acquire-license" onclick="showContent('acquire-license')">Acquire License</a></li>
+            <li><a href="#cancel-license" onclick="showContent('cancel-license')">Cancel License</a></li>
+            <li><a href="#delete-account" onclick="showContent('delete-account')">Delete Account</a></li>
+            <li><a href="#edit-account" onclick="showContent('edit-account')">Edit Account</a></li>
+            <li><a href="#link-license" onclick="showContent('link-license')">Link License</a></li>
+            <li><a href="#renew-license" onclick="showContent('renew-license')">Renew License</a></li>
+            
+        </ul>
+    </div>  
+
+        <div class="main-content">
+        <div class="content account-summary" id="account-summary">
+            <h1>Welcome to your Software License Manager profile!!</h1>
+            <h2>Here is your account summary:</h2>
+            <p><strong>Name:</strong> <span id="accountName"></span></p>
+            <p><strong>Email:</strong> <span id="accountEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="accountPhone"></span></p>
+            <p><strong>Address:</strong> <span id="accountAddress"></span></p>
+            <p><strong>License Number:</strong> <span id="licenseNumber"></span></p>
+        </div>
+    
+        <div class="content" id="acquire-license">
+            <h2>Acquiring a new license</h2>
+        <p>Please enter the details for a new license below:</p>
+        <form id="AcquireLicense" action="" method="get">
+            <label for="serialNumber">Serial Number: </label>
+                <input type="text" name="serialNumber" required>
+            <br><br>
+            <label for="version">Product Version: </label>
+                <select name="version">
+                    <option value="personal">Personal Use</option>
+                    <option value="commercial">Office/Commercial use</option>
+                </select>
+            <br><br>
+            <label for="vendor">Vendor:</label>
+                <input type="text" name="vendor" required>
+            <br><br>
+            <label>Additional Comments:</label><br>
+                <textarea name="comments"></textarea>
+            <br><br>
+            <input type="submit" onclick="purchase()" value="Purchase">
+            <input type="submit" value="Cancel">
+        </form>
+        </div>
+    
+        <div class="content" id="cancel-license">
+            <h2>Cancel License</h2>
+        <p>Please enter the following information to cancel your license:</p>
+        <form id="CancelLicense" action="" method="get">
+            <label for="serialNumber">Serial Number: </label>
+            <input type="text" name="serialNumber" required>
+            <br><br>
+            <input type="submit" value="Cancel License" onclick="cancelLicense()">
+        </form>
+        </div>
+    
+        <div class="content" id="delete-account">
+            <h2>Delete account</h2> 
+        <p>Deleting your account permanently erases your data and it cannot be restored.</p>
+        <button onclick="deleteAccount()">Submit</button>
+        <input type="submit" value="Cancel">
+        </div>
+    
+        <div class="content" id="edit-account">
+            <h2>Change account details</h2>
+        <form id="EditAccount" action="" method="post">
+            <label for="ClientName">Change Name: </label>
+                <input type="text" id="newName" name="ClientName" required>
+            <br><br>
+            <label for="ClientPassword">Change Password: </label>
+                <input type="password" id="newPassword" name="ClientPassword" required>
+            <br><br>
+            <button onclick="EditAccount()">Submit</button>
+        </form>
+        </div>
+        
+        <div class="content" id="link-license">
+            <h2>Link your license Number:</h2>
+        <form id="Link License" method="post">
+            <label for="licenseNumber">License Number:</label>
+            <input type="text" id="licenseNumber" required><br>
+            <br>
+            <label for="purchaseDate">Purchase Date:</label>
+            <input type="date" id="purchaseDate" required><br>
+            <br>
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" required><br><br>
+    
+            <input type="button" value="Activate License" onclick="activateLicense()">
+        </form>
+        </div>
+    
+        <div class="content" id="renew-license">
+            <h2>Renew Your License</h2>
+            <p>Please enter the details for license renewal below:</p>
+            <form id="RenewLicense" action="" method="get">
+                <label for="serialNumber">Existing Serial Number: </label>
+                <input type="text" name="serialNumber" required>
+                <br><br>
+                <label for="newSerialNumber">New Serial Number: </label>
+                <input type="text" name="newSerialNumber" required>
+                <br><br>
+                <label for="version">Product Version: </label>
+                <select name="version">
+                    <option value="personal">Personal Use</option>
+                    <option value="commercial">Office/Commercial use</option>
+                </select>
+                <br><br>
+                <label for="vendor">Vendor:</label>
+                <input type="text" name="vendor" required>
+                <br><br>
+                <label>Additional Comments:</label><br>
+                <textarea name="comments"></textarea>
+                <br><br>
+                <input type="submit" value="Renew" onclick="renewLicense()">
+                <input type="submit" value="Cancel">
+            </form>
+        </div>
+
+        </div>
+
+    <script src="Client.js"></script>
+</body>
+</html>

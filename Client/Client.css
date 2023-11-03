@@ -1,1 +1,79 @@
-/*put all the client css code here in this file*/
+#emailRequest{
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+    
+
+}
+#codeReset{
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+    /* add display: none; for deliverable two*/
+    
+}
+#newPassword{
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+    /* add display: none; for deliverable two*/
+}
+
+
+body {
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    background-color: #023e8a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#LogInPage {
+    max-width: 400px; /* Adjust the width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Align form elements to the left */
+}
+
+button {
+    display: block;
+    padding: 10px;
+    margin: 10px auto;
+    width: 50%;
+}
+
+#CreateAcct{
+    max-width: 400px; /* Adjust the width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Align form elements to the left */
+}
+
+.content{
+    display: none;
+}
+
