@@ -16,7 +16,7 @@ body {
 
 .container {
     border: 1px solid grey;
-    margin: 1rem;
+    margin: 2%;
     padding: 16px;
 }
 
@@ -43,6 +43,7 @@ display: flex;
 margin: 2%;
 padding: 1%;
 gap: 5%;
+overflow-x:auto;
 }
 
 .tabs span {
@@ -114,7 +115,7 @@ gap: 5%;
    
   }
 
-  input[type=text], select, input[type=password] {
+  input[type=text], select, input[type=password], input[type="email"] {
     width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -132,6 +133,7 @@ gap: 5%;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    
   }
   input[type=submit]:hover {
     background-color: rgb(184, 46, 39);
@@ -190,7 +192,7 @@ gap: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: lightblue;
   }
   
   #myAccount{
@@ -218,8 +220,21 @@ gap: 5%;
     opacity: 0.9;
   }
   
- button:hover {
+ button:hover, #il {
     background-color: rgb(184, 46, 39);
+
+  }
+
+  #il{
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: auto;
+    opacity: 0.9;
+
   }
 
 #signup2{
@@ -237,3 +252,10 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
+#footer{
+  background-color: lightblue;
+}
+
+.tabs__tab{
+  padding: 10px;
+}
