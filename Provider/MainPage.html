@@ -17,7 +17,7 @@
         <span data-tab-value="#Clients">Clients</span>
         <span data-tab-value="#IssueLicense">Issue License</span>
         <span data-tab-value="#MyAccount">My account</span>
-        <span data-tab-value="#LogOut"> <a id="email" type="button">Log out</a></span>
+        <span data-tab-value="#LogOut"> <a href="LogInPage.html" id="logout" type="button">Log out</a></span>
       </div>
       <!-- Tab content -->
       <div class="tab-content">
@@ -40,6 +40,7 @@
               <th>Name</th>
               <th>Address</th>
               <th>Software</th>
+              <th>SerialNumber</th>
               <th>IssuedOn</th>
               <th>ExpiresOn</th>
               <th>Email</th>
@@ -50,6 +51,7 @@
               <td onclick="populateClientForm(0)">Jane Doe</a> </td>
               <td>Montreal</td>
               <td>Microsoft Office</td>
+              <td>1000000</td>
               <td>Dec 24 2018</td>
               <td>Dec 24 2019</td>
               <td><a href="mailto:JaneDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -60,6 +62,7 @@
               <td onclick="populateClientForm(1)">John Doe</td>
               <td>Montreal</td>
               <td>Adobe Acrobat</td>
+              <td>1000001</td>
               <td>Jun 05 2020</td>
               <td>Jun 05 2021</td>
               <td><a href="mailto:JohnDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -70,6 +73,7 @@
               <td onclick="populateClientForm(2)">Sam Smith</td>
               <td>Montreal</td>
               <td>Microsoft Office</td>
+              <td>1000002</td>
               <td>Mar 31 2023</td>
               <td>Mar 31 2024</td>
               <td><a href="mailto:SamSmith@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -77,7 +81,7 @@
             </tr>
           </table>
 
-                    <form action="Pages.js" id="clientDetailsForm">
+          <form action="Pages.js" id="clientDetailsForm">
             <h3> Client Information</h3>           
 
           
@@ -109,31 +113,41 @@
           <p id="info">
             You can issue a client a license to use one of your softwares here.
             Please fill in the needed details and press the button "Issue License".
-            <button id="issuelicense" type="button" hidden="hidden">Issue license</button>
+          <!--  <button id="issuelicense" type="button" hidden="hidden">Issue license</button>   -->
           </p>
 
           <div class="row">
             <div class="column">
               <div class="card">
                 <h3>Software 1</h3>
-                  <button id="email" type="button" >Issue license</button>
+                <a href="IssueLicense.html">
+                  <button id="il" type="button">Issue license</button>
+                </a>
+    
               </div>
             </div>
           
             <div class="column">
               <div class="card">
                 <h3>Software 2</h3>
-                 <button id="email" type="button" >Issue license</button>
+                <a href="IssueLicense.html">
+                  <button id="il" type="button">Issue license</button>
+                </a>
+    
               </div>
             </div>
             
             <div class="column">
               <div class="card">
                 <h3>software 3</h3>
-                  <button id="email" type="button" >Issue license</button>
+                <a href="IssueLicense.html">
+                  <button id="il" type="button">Issue license</button>
+                </a>
+    
               </div>
             </div>
 
+          </div>
         </div>
 <!--------------------------------------------Provider Account Tab content----------------------------------------------->
         <div class="tabs__tab" id="MyAccount" data-tab-info>

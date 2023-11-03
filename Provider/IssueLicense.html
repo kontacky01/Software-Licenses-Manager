@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="Pages.css">
+    <title>Log in</title>
+  </head>
+  <body>
+    
+    <form action="Pages.js" id="issueLicenseForm">
+      <h3> Fill in Client Information</h3>           
+    
+      <label for="cliendID">Client ID:</label><br>
+      <input type="text" id="id" name="fullname"><br>
+
+        <label for="fullname">Full name:</label><br>
+        <input type="text" id="fn" name="fullname"><br>
+    
+        <label for="address">Address:</label><br>
+        <input type="text" id="adr" name="address"><br>
+
+        <label for="email"> Email:</label><br>
+        <input type="text" id="em" name="Email"><br>
+    
+        <label for="software">Software:</label><br>
+        <input type="text" id="sft" name="software"><br>
+    
+        <br>
+        <button onclick="issuelicense()" type="button" value="Issue License">Issue License</button>
+    </form>
+    <script src="Pages.js"></script>
+  </body>
+</html>
