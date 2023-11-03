@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My Software License Manager</title>
+        <link rel="stylesheet" href="Client.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+        <h1>Software License Manager</h1>
+        </header>
+
+        <form id="CreateAcct" action="" method="post">
+        <label for="accountName">Full Name: </label>
+            <input type="text" name="accountName" id="accountName" required>
+            <br><br>
+        <label for="accountEmail">Email: </label>
+            <input type="email" name="accountEmail" id="accountEmail" required>
+            <br><br>
+        <label for="accountPhoneNumber">Phone Number:</label>
+            <input type="text" name="accountPhoneNumber" id="accountPhoneNumner" required>
+            <br><br>
+        <label for="accountAddress">Address:</label>
+            <input type="text" name="accountAddress" id="accountAddress" required>
+            <br><br>
+        <label for="accountPassword">Create a Strong Password: </label>
+            <input type="password" name="accountPassword"  id="accountPassword" required>
+        <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+            <br><br>
+        <label>I agree to the terms and conditions: </label>
+            <input type="checkbox" name="terms" id="termsCheckbox" required>
+            <br><br>
+        <a href="MyAccount.html">
+            <button type="button" onclick="CreateAccount()">Sign up</button>
+        </a>
+        </form>
+        
+
+        <script src="Client.js"></script>
+    </body>
+</html>
+    

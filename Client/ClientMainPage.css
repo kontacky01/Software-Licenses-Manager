@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #023e8a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #0077b6 ;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+   
+}
+
+.side-menu {
+    background-color: rgb(133, 173, 196);
+    color: #023e8a;
+    width: 250px;
+    padding: 20px;
+    display: inline-block; 
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: inline-block;
+    
+}
+
+footer {
+    background-color: #555454;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    clear: both;
+}
+content {
+    display: none;
+    display: inline-block;
+}
+.account-summary{
+    display: block;
+}

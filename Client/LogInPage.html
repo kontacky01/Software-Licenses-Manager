@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My Software License Manager</title>
+        <link rel="stylesheet" href="Client.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+        <h1>Software License Manager</h1>
+        </header>
+
+        <form id="LogInPage" method="post">
+            <label for="email">Username Name:</label><br>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <a href="MyAccount.html">
+                <input type="button" value="Log In" onclick="login()">
+            </a>
+            
+            <p>_____________________OR_____________________</p><br><br>
+            
+                <a href="ForgotPasswordPage.html">
+                    <button type="button">Forgot password?</button>
+                </a>
+            
+                <a href="CreateAccount.html">
+                    <button type="button">Sign up</button>
+                </a>
+            </p>
+        </div>
+        <script src="Client.js"></script>
+    </body>
+</html>
