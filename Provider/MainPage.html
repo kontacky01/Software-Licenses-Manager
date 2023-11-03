@@ -8,11 +8,11 @@
   </head>
   <body>
     <div id="title">
-      <h1>My Software Manager</h1>
+      <h1>My Software Licenses’ Manager</h1>
     </div>
-    <div class="menu">
+    <div class="menu" >
       <!-- Tabs Detail -->
-      <div class="tabs">
+      <div class="tabs" >
         <span data-tab-value="#Home">Home</span>
         <span data-tab-value="#Clients">Clients</span>
         <span data-tab-value="#IssueLicense">Issue License</span>
@@ -22,18 +22,23 @@
       <!-- Tab content -->
       <div class="tab-content">
 <!------------------------------------------------Home Tab content------------------------------------------------------->
-        <div class="tabs__tab active" id="Home" data-tab-info>
+        <div class="tabs__tab active"  data-tab-info>
           <p>
             Welcome to the Software Licenses' Manager Platform. Managing software licenses might become cumbersome for both software users and providers.<br>
             Our objective is to provide a platform that helps providers and clients in managing their 
             licenses easily and securely. We mainly prioritize generating, safely storing, checking, and 
-            enforcing valide and legitimate of licenses.
+            enforcing valide and legitimate of licenses.</br>
+            You could modify, remove, and add clients' information on this website to better manage them. 
+            You could grant fresh licences to either new or existing customers. Additionally, you would be in charge of your own account details.</br>
+            Thank You for choosing our platform.</br>
+
           </p>
         </div>
 <!-----------------------------------------------Clients Tab content----------------------------------------------------->
         <div class="tabs__tab" id="Clients" data-tab-info>
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for client.." title="Type in a name">
-          
+          <div style="overflow-x:auto;">
+
           <table id="clientsTable">
             <tr class="header">
               <th>Client ID</th>
@@ -80,6 +85,7 @@
               <td>Active</td>
             </tr>
           </table>
+          </div>
 
           <form action="Pages.js" id="clientDetailsForm">
             <h3> Client Information</h3>           
@@ -101,17 +107,17 @@
               <input type="text" id="expirydate" name="expirydate"><br>
 
               <br>
-              <input type="submit" value="Save Changes">
-              <button onclick="blockClient()" id="blockclient" type="button" hidden="hidden">Block client</button>
-              <button onclick="unblockClient()" id="unblockclient" type="button" hidden="hidden">Unblock client</button>
-              <button onclick="renewLicense()" id="renewlicense" type="button" hidden="hidden">Renew license</button>
-              <button onclick="cancelLicense()" id="cancellicense" type="button" hidden="hidden">Cancel license</button>
+              <input type="submit" value="Save Changes"><br>
+              <button onclick="blockClient()" id="blockclient" type="button" hidden="hidden">Block client</button><br>
+              <button onclick="unblockClient()" id="unblockclient" type="button" hidden="hidden">Unblock client</button><br>
+              <button onclick="renewLicense()" id="renewlicense" type="button" hidden="hidden">Renew license</button><br>
+              <button onclick="cancelLicense()" id="cancellicense" type="button" hidden="hidden">Cancel license</button><br>
           </form>
         </div>
 <!-------------------------------------------Issue License tab content--------------------------------------------------->
         <div class="tabs__tab" id="IssueLicense" data-tab-info>
           <p id="info">
-            You can issue a client a license to use one of your softwares here.
+            You can issue a client a license to use one of your softwares here.</br>
             Please fill in the needed details and press the button "Issue License".
           <!--  <button id="issuelicense" type="button" hidden="hidden">Issue license</button>   -->
           </p>
@@ -119,7 +125,7 @@
           <div class="row">
             <div class="column">
               <div class="card">
-                <h3>Software 1</h3>
+                <h3>Microsoft Office</h3>
                 <a href="IssueLicense.html">
                   <button id="il" type="button">Issue license</button>
                 </a>
@@ -129,7 +135,7 @@
           
             <div class="column">
               <div class="card">
-                <h3>Software 2</h3>
+                <h3>Adobe Acrobat</h3>
                 <a href="IssueLicense.html">
                   <button id="il" type="button">Issue license</button>
                 </a>
@@ -139,7 +145,7 @@
             
             <div class="column">
               <div class="card">
-                <h3>software 3</h3>
+                <h3>Software 3</h3>
                 <a href="IssueLicense.html">
                   <button id="il" type="button">Issue license</button>
                 </a>
@@ -151,7 +157,7 @@
         </div>
 <!--------------------------------------------Provider Account Tab content----------------------------------------------->
         <div class="tabs__tab" id="MyAccount" data-tab-info>
-          <h3 id="info">Below are your account details.</h3><br>
+          <h3 id="info">Below are your account details.</h3>
           
           <form action="Pages.js" id="providerDetailsForm">
             <h4> Provider Information</h4>
@@ -165,7 +171,7 @@
               <input type="text" id="providerphonenumber" name="phonenumber" disabled><br>
 
               <label for="email">Email:</label><br>
-              <input type="email" id="provideremail" name="email" disabled><br>
+              <input type="email" type="text" id="provideremail" name="email" disabled><br>
 
               <label for="password">Password:</label><br>
               <input type="password" id="providerpassword" name="password" disabled><br>
@@ -182,5 +188,12 @@
     </div>
 
   <script src="Pages.js"></script>
+
+  <footer class="container" id="footer" >
+    <p>Contact Us: </p>
+    <p>Email: support@mysoftwaremanager.com</p>
+    <p>  Phone: +1-123-456-7890</p>
+
+  </footer>
   </body>
 </html>
