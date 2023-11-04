@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="title">
-      <h1>My Software Licenses’ Manager</h1>
+      <h1>My Software Licenses' Manager</h1>
     </div>
     <div class="menu" >
       <!-- Tabs Detail -->
@@ -56,7 +56,7 @@
               <td onclick="populateClientForm(0)">Jane Doe</a> </td>
               <td>Montreal</td>
               <td>Microsoft Office</td>
-              <td>1000000</td>
+              <td>15962688</td>
               <td>Dec 24 2018</td>
               <td>Dec 24 2019</td>
               <td><a href="mailto:JaneDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -67,7 +67,7 @@
               <td onclick="populateClientForm(1)">John Doe</td>
               <td>Montreal</td>
               <td>Adobe Acrobat</td>
-              <td>1000001</td>
+              <td>56581455</td>
               <td>Jun 05 2020</td>
               <td>Jun 05 2021</td>
               <td><a href="mailto:JohnDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -78,7 +78,7 @@
               <td onclick="populateClientForm(2)">Sam Smith</td>
               <td>Montreal</td>
               <td>Microsoft Office</td>
-              <td>1000002</td>
+              <td>94315141</td>
               <td>Mar 31 2023</td>
               <td>Mar 31 2024</td>
               <td><a href="mailto:SamSmith@example.com" ><button type="button" id="email">Send email</button></a></td>
@@ -119,16 +119,13 @@
           <p id="info">
             You can issue a client a license to use one of your softwares here.</br>
             Please fill in the needed details and press the button "Issue License".
-          <!--  <button id="issuelicense" type="button" hidden="hidden">Issue license</button>   -->
           </p>
 
           <div class="row">
             <div class="column">
               <div class="card">
                 <h3>Microsoft Office</h3>
-                <a href="IssueLicense.html">
-                  <button id="il" type="button">Issue license</button>
-                </a>
+                  <button onclick="showIssueLicenseForm()" id="il" type="button">Issue license</button>
     
               </div>
             </div>
@@ -136,9 +133,7 @@
             <div class="column">
               <div class="card">
                 <h3>Adobe Acrobat</h3>
-                <a href="IssueLicense.html">
-                  <button id="il" type="button">Issue license</button>
-                </a>
+                  <button onclick="showIssueLicenseForm()" id="il" type="button">Issue license</button>
     
               </div>
             </div>
@@ -146,38 +141,92 @@
             <div class="column">
               <div class="card">
                 <h3>Software 3</h3>
-                <a href="IssueLicense.html">
-                  <button id="il" type="button">Issue license</button>
-                </a>
+                  <button onclick="showIssueLicenseForm()" id="il" type="button">Issue license</button>
     
               </div>
             </div>
 
           </div>
+          <form action="Pages.js" id="issueLicenseForm" hidden>
+            <h3> Fill in Client Information to issue a license</h3><br>           
+          
+            <label for="cliendID">Client ID:</label><br>
+            <input type="text" id="id" name="fullname"><br>
+      
+              <label for="fullname">Full name:</label><br>
+              <input type="text" id="fn" name="fullname"><br>
+          
+              <label for="address">Address:</label><br>
+              <input type="text" id="adr" name="address"><br>
+      
+              <label for="email"> Email:</label><br>
+              <input type="text" id="em" name="Email"><br>
+          
+              <label for="software">Software:</label><br>
+              <input type="text" id="sft" name="software"><br>
+          
+              <br>
+              <button onclick="issuelicense()" type="button" value="Issue License">Issue License</button>
+          </form>
         </div>
 <!--------------------------------------------Provider Account Tab content----------------------------------------------->
-        <div class="tabs__tab" id="MyAccount" data-tab-info>
+        <!--this shouldn't be visible and this table will be in the DB for phase2-->
+        <table id="providersTable" hidden="hidden">
+          <tr>
+              <th>Company Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+          </tr>
+          <tr>
+              <td>Microsoft Corporation</td>
+              <td>123 Main St</td>
+              <td>555-123-4567</td>
+              <td>provider1@gmail.com</td>
+          </tr>
+          <tr>
+              <td>Meta Platforms Inc</td>
+              <td>456 Elm St</td>
+              <td>555-987-6543</td>
+              <td>provider2@gmail.com</td>
+          <tr>
+              <td>Google LLC</td>
+              <td>123 Main St</td>
+              <td>555-123-4567</td>
+              <td>provider3@gmail.com</td>
+          <tr>
+              <td>Adobe Inc</td>
+              <td>456 Elm St</td>
+              <td>555-987-6543</td>
+              <td>provider4@gmail.com</td>
+          </tr>
+          <tr>
+              <td>Yahoo! Inc</td>
+              <td>123 Main St</td>
+              <td>555-123-4567</td>
+              <td>provider5@gmail.com</td>
+          </tr>
+      </table>
+
+<div class="tabs__tab" id="MyAccount" data-tab-info>
           <h3 id="info">Below are your account details.</h3>
           
           <form action="Pages.js" id="providerDetailsForm">
             <h4> Provider Information</h4>
               <label for="companyname">Company Name:</label><br>
-              <input type="text" id="companyname" name="companyname" disabled><br>
+              <input type="text" id="companyname" name="companyname" placeholder="Microsoft Corporation" disabled><br>
 
               <label for="address">Address:</label><br>
-              <input type="text" id="provideraddress" name="address" disabled><br>
+              <input type="text" id="provideraddress" name="address" placeholder="123 Main St" disabled><br>
 
               <label for="phonenumber">Phone Number:</label><br>
-              <input type="text" id="providerphonenumber" name="phonenumber" disabled><br>
+              <input type="text" id="providerphonenumber" name="phonenumber" placeholder="555-123-4567" disabled><br>
 
               <label for="email">Email:</label><br>
-              <input type="email" type="text" id="provideremail" name="email" disabled><br>
+              <input type="email" type="text" id="provideremail" name="email" placeholder="provider1@gmail.com" disabled><br>
 
               <label for="password">Password:</label><br>
-              <input type="password" id="providerpassword" name="password" disabled><br>
-
-            <!-- <label for="softwareToSale">Software To Sale:</label> 2b revisited-->
-            <!-- <input type="text" id="softwareToSale" name="softwareToSale" disabled><br>2b revisite --> 
+              <input type="password" id="providerpassword" name="password" placeholder="*****" disabled><br>
           
             <br>
             <input type="submit" value="Save Changes">

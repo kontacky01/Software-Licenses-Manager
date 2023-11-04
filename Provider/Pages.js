@@ -155,10 +155,18 @@ function generateSN() {
     return randomNumber;
 }
 /**
+ * this function unhides the form for a provider to issue a license to a client
+ */
+function showIssueLicenseForm() {
+    var frm = document.getElementById("issueLicenseForm");
+    frm.removeAttribute("hidden");
+}
+/**
  * this function issues licenses which includes generating a random serial number for each new license
  */
 function issuelicense() {
     var f = document.getElementById("issueLicenseForm");
+
     var table = document.getElementById('clientsTable');
 
     // Get the current date and calculate the new expiry date (one year from the current date)
@@ -171,7 +179,7 @@ function issuelicense() {
     var expiryDate = future.toDateString().substring(4);
 
     // Create a new row and cells for the record
-    var newRow = table.insertRow(table.rows.length);
+    var newRow = table.insertRow(-1);
     var cellClientId = newRow.insertCell(0);
     var cellName = newRow.insertCell(1);
     var cellAddress = newRow.insertCell(2);
@@ -183,16 +191,18 @@ function issuelicense() {
     var cellStatus = newRow.insertCell(8);
 
     // Populate the cells with data
-    cellClientId.innerHTML = f.getElementById('id').value;
-    cellName.innerHTML = f.getElementById('fn').value;
-    cellAddress.innerHTML = f.getElementById('adr').value;
-    cellSoftware.innerHTML = f.getElementById('sft').value;
-    cellSerialNumber = generateSN();
+    cellClientId.innerHTML = document.getElementById('id').value;
+    cellName.innerHTML = document.getElementById('fn').value;
+    cellAddress.innerHTML = document.getElementById('adr').value;
+    cellSoftware.innerHTML = document.getElementById('sft').value;
+    cellSerialNumber.innerHTML = generateSN();
     cellIssuedOn.innerHTML = currentDate;
     cellExpiresOn.innerHTML = expiryDate;
-    cellEmail.innerHTML = '<a href="mailto:' + f.getElementById('em').value + '"><button type="button" id="email">Send email</button></a>';
+    cellEmail.innerHTML = '<a href="mailto:' + document.getElementById('em').value + '"><button type="button" id="email">Send email</button></a>';
     cellStatus.innerHTML = 'Active';// Default status
     
+    //hide the form now that the license has been issued
+    document.getElementById("issueLicenseForm").hidden = true;
 }
 /**
  * this function  gets details of the provider who is currently logged in
@@ -222,15 +232,14 @@ function populateProviderForm() {
             document.getElementById("provideremail").disabled = false;
 
             var companyname = rows[i].getElementsByTagName("td")[0].textContent;
-            console.log("companyname is: "+companyname);
             var address = rows[i].getElementsByTagName("td")[1].textContent;
             var phonenumber = rows[i].getElementsByTagName("td")[2].textContent;
 
             // Populate the fields in the provider details form on MyAccount tab
-            form2.companyname.value = companyname;
-            form2.provideraddress.value = address;
-            form2.providerphonenumber.value = phonenumber;
-            form2.provideremail.value = enteredEmail;
+            document.getElementById("companyname").value = companyname;
+            document.getElementById("provideraddress").value = address;
+            document.getElementById("providerphonenumber").value = phonenumber;
+            document.getElementById("provideremail").value = enteredEmail;
 
             // Break the loop since a match has been found
             break;
