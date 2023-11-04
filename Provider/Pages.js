@@ -9,7 +9,6 @@ var currentSelectedRow = 0;
 function unhideButtons() {
     document.getElementById("blockclient").removeAttribute("hidden");
     document.getElementById("unblockclient").removeAttribute("hidden");
-    document.getElementById("issuelicense").removeAttribute("hidden");
     document.getElementById("renewlicense").removeAttribute("hidden");
     document.getElementById("cancellicense").removeAttribute("hidden");
 }
@@ -18,6 +17,9 @@ function unhideButtons() {
  * and fill those details in the form that shows each individual client's data for edit or view purposes
  */
 function populateClientForm(row){
+
+    //unhide buttons to perform more operations for the selected client
+    unhideButtons();
 
     var clientsTable = document.getElementById("clientsTable");
     var form1 = document.getElementById("clientDetailsForm");
@@ -34,12 +36,9 @@ function populateClientForm(row){
     form1.issuedate.value = issuedate;
     form1.expirydate.value = expirydate;
 
-    //unhide buttons to perform more operations for the selected client
-    unhideButtons();
-
     //Show Renew License and Cancel License buttons again everytime user clicks a new row
-    document.getElementById('renewlicense').hidden = false;
-    document.getElementById('renewlicense').hidden = false;
+    //document.getElementById('renewlicense').hidden = false;
+    //document.getElementById('cancellicense').hidden = false;
     
     //keeps track of the row that is currently selected by the user to be used later by function renewlicense and cancellicense
     currentSelectedRow = row;
