@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='/Pages.css'>
+        <title>Log in</title>
+      </head>
+    <body>
+
+        <div id='title'>
+            <h1>My Software Manager</h1>
+          </div >
+          <div class='container' id='signup'>
+        <form id='LogInForm' action='/authenticate' method='POST'>
+
+            <label class='LogInLabels' for='email'> Email:</label><br>
+            <input type='text' id='logInEmail' name='logInEmail' required placeholder='provider@gmail.com'><br>
+
+            <label class='LogInLabels' for='password'> Password:</label><br>
+            <input type='password' id='logInPassword' name='logInPassword' required><br><br>
+
+            <input onclick='authenticateUser(event)' type='submit' id='LogInButton' value='Log in'><br><br><br>            
+           
+        </form>
+    </div>
+
+    <p id='signup2'>
+        Don't have an account?
+        <a href='http://localhost:3000/CreateAccount'> <br>
+            <button type='button'>Sign up</button><br><br><br>
+        </a>
+     </p>
+    <script src='Pages.js'></script>
+
+    <footer class='container' id='footer' >
+        <p>Contact Us: </p>
+              <p>Email: support@mysoftwaremanager.com</p>
+        <p>  Phone: +1-123-456-7890</p>
+  
+      </footer>
+    </body>
+</html>
