@@ -39,40 +39,56 @@
           <input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for client..' title='Type in a name'>
           <div style='overflow-x:auto;'>
 
-            <table id='clientsTable'>
-              <thead>
-                <tr class='header'>
-                  <th>Client ID</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Software</th>
-                  <th>SerialNumber</th>
-                  <th>IssuedOn</th>
-                  <th>ExpiresOn</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <!-- <tbody>
-                <% ClientsData.forEach((row) => { %>
-                  <tr>
-                    <td><%= row.ClientID %></td>
-                    <td><onclick='populateClientForm('<%= row.ClientID %>')'><%= row.Name %></a></td>
-                    <td><%= row.Address %></td>
-                    <td><%= row.Software %></td>
-                    <td><%= row.SerialNumber %></td>
-                    <td><%= row.IssuedOn %></td>
-                    <td><%= row.ExpiresOn %></td>
-                    <td><a href='mailto:<%= row.Email %>'>Send email</a></td>
-                    <td><%= row.Status %></td>
-                  </tr>
-                <% }); %>
-              </tbody> -->
+            <table id="clientsTable">
+              <tr class="header">
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Software</th>
+                <th>SerialNumber</th>
+                <th>IssuedOn</th>
+                <th>ExpiresOn</th>
+                <th>Email</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td onclick="populateClientForm(0)">Jane Doe</a> </td>
+                <td>Montreal</td>
+                <td>Microsoft Office</td>
+                <td>15962688</td>
+                <td>Dec 24 2018</td>
+                <td>Dec 24 2019</td>
+                <td><a href="mailto:JaneDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
+                <td>Active</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td onclick="populateClientForm(1)">John Doe</td>
+                <td>Montreal</td>
+                <td>Adobe Acrobat</td>
+                <td>56581455</td>
+                <td>Jun 05 2020</td>
+                <td>Jun 05 2021</td>
+                <td><a href="mailto:JohnDoe@example.com" ><button type="button" id="email">Send email</button></a></td>
+                <td>Active</td>
+              </tr>
+              <tr>
+                <td>003</td>
+                <td onclick="populateClientForm(2)">Sam Smith</td>
+                <td>Montreal</td>
+                <td>Microsoft Office</td>
+                <td>94315141</td>
+                <td>Mar 31 2023</td>
+                <td>Mar 31 2024</td>
+                <td><a href="mailto:SamSmith@example.com" ><button type="button" id="email">Send email</button></a></td>
+                <td>Active</td>
+              </tr>
             </table>
             
           </div>
 
-          <form action='Pages.js' id='clientDetailsForm'>
+          <form id='clientDetailsForm'>
             <h3> Client Information</h3>           
 
           
@@ -95,8 +111,8 @@
               <input type='submit' value='Save Changes'><br>
               <button onclick='blockClient()' id='blockclient' type='button' hidden='hidden'>Block client</button><br>
               <button onclick='unblockClient()' id='unblockclient' type='button' hidden='hidden'>Unblock client</button><br>
-              <button onclick='renewLicense()' id='renewlicense' type='button' hidden='hidden'>Renew license</button><br>
-              <button onclick='cancelLicense()' id='cancellicense' type='button' hidden='hidden'>Cancel license</button><br>
+              <button onclick='renewLicense(event)' id='renewlicense' type='button' hidden='hidden'>Renew license</button><br>
+              <button onclick='cancelLicense(event)' id='cancellicense' type='button' hidden='hidden'>Cancel license</button><br>
           </form>
         </div>
 <!-------------------------------------------Issue License tab content--------------------------------------------------->
@@ -132,7 +148,7 @@
             </div>
 
           </div>
-          <form action='Pages.js' id='issueLicenseForm' hidden>
+          <form id='issueLicenseForm' action='/issueLicense' method='POST' hidden>
             <h3> Fill in Client Information to issue a license</h3><br>           
           
             <label for='cliendID'>Client ID:</label><br>
@@ -146,12 +162,15 @@
       
               <label for='email'> Email:</label><br>
               <input type='text' id='em' name='Email'><br>
+
+              <label for='phonenumber'> Phone Number:</label><br>
+              <input type='text' id='phn' name='PhoneNumber'><br>
           
               <label for='software'>Software:</label><br>
               <input type='text' id='sft' name='software'><br>
           
               <br>
-              <button onclick='issuelicense()' type='button' value='Issue License'>Issue License</button>
+              <button onclick='issueLicense(event)' type='button' value='Issue License'>Issue License</button>
           </form>
         </div>
 <!--------------------------------------------Provider MyAccount Tab content----------------------------------------------->
