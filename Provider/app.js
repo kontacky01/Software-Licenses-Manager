@@ -103,6 +103,97 @@ app.post('/saveUpdatedData', (req, res) => {
   );
 });
 
+/**
+ * Save details of an issued license endpoint
+ */
+app.post('/saveSignupData', (req, res) => {
+  const { SignupEmail, SignupCompanyname, SignupPassword } = req.body;
+
+  const sql = 'INSERT INTO Provider (Email, CompanyName, Password) VALUES (?, ?, ?)';
+  connection.query(sql, [SignupEmail, SignupCompanyname, SignupPassword], (err, result) => {
+    if (err) {
+      console.error('Error inserting data:', err);
+      res.status(500).json({ success: false, error: 'Failed to sign up' });
+    } else {
+      console.log('Data inserted:', result);
+      res.redirect('/');
+    }
+  });
+});
+
+app.post('/issueLicense', (req, res) => {
+  const { CliendID, ClientFullName, ClientAddress, ClientEmail, ClientPhoneNumber, ClientSoftware, ClientCurrentDate, ClientExpiryDate, ClientSerialNumber, ClientStatus } = req.body;
+  const sql = 'INSERT INTO Software (SerialNumber, SoftwareName, IssuedOn, ExpiresOn, ProviderID, ClientID) VALUES (?, ?, ?, ?, ?, ?)';
+
+  connection.query(sql, [ClientSerialNumber, ClientSoftware, ClientCurrentDate, ClientExpiryDate, '5', CliendID], (err, result) => {
+    if (err) {
+      console.error('Error issuing license:', err);
+      res.status(500).json({ success: false, error: 'Failed to issue license' });
+    } else {
+      console.log('License issued:', result);
+      res.redirect('/');
+    }
+  });
+});
+/**
+ * Cancel license endpoint
+ */
+app.post('/cancelLicense', (req, res) => {
+  const { CliendID, ClientExpiryDate } = req.body;
+  const sql = `UPDATE Software 
+               SET ExpiresOn=?,
+               WHERE ClientID=?`;
+
+  connection.query(
+    sql,
+    [ClientExpiryDate, CliendID],
+    (err, result) => {
+      if (err) {
+        console.error('Error updating data:', err);
+        res.status(500).json({ success: false, error: 'Failed to update data' });
+      } else {
+        console.log('Query executed:', result);
+        if (result.changedRows > 0) {
+          res.status(200).send('Software information updated successfully');
+        } else if (result.affectedRows > 0) {
+          res.status(200).send('No changes applied');
+        } else {
+          res.status(404).send('Software not found');
+        }
+      }
+    }
+  );
+});
+/**
+ * Renew license endpoint
+ */
+app.post('/renewLicense', (req, res) => {
+  const { ClientCurrentDate, ClientExpiryDate, CliendID } = req.body;
+  const sql = `UPDATE Software 
+               SET IssuedOn=?, 
+                    ExpiresOn=?,
+               WHERE ClientID=?`;
+
+  connection.query(
+    sql,
+    [ClientCurrentDate, ClientExpiryDate, CliendID],
+    (err, result) => {
+      if (err) {
+        console.error('Error updating data:', err);
+        res.status(500).json({ success: false, error: 'Failed to update data' });
+      } else {
+        console.log('Query executed:', result);
+        if (result.changedRows > 0) {
+          res.status(200).send('Software information updated successfully');
+        } else if (result.affectedRows > 0) {
+          res.status(200).send('No changes applied');
+        } else {
+          res.status(404).send('Software not found');
+        }
+      }
+    }
+  );
+});
 //=======================================Serve static files from the 'public' directory===================================================
 
 // Define routes to serve different HTML pages
