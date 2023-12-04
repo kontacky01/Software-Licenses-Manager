@@ -90,53 +90,6 @@ function populateClientForm(row){
     currentSelectedRow = row;
 }
 /**
- * this function updates issue and expiry dates of a software
- *  to whatever today's date and one year from today respectivelly as an indication of its renewal
- */
-function renewLicense() {
-    var table = document.getElementById("clientsTable");
-    var selectedRow = table.rows[currentSelectedRow + 1];
-
-    // Get the current date and calculate the new expiry date (one year from the current date)
-    var today = new Date();
-    var future = new Date(today);
-    future.setFullYear(today.getFullYear() + 1);
-
-    // Format the current and new expiry dates as strings in the format of "Mon DD YYYY"
-    var currentDate = today.toDateString().substring(4);
-    var expiryDate = future.toDateString().substring(4);
-  
-    // Update the "issuedate" and "future" in the table
-    selectedRow.cells[5].textContent = currentDate;
-    selectedRow.cells[6].textContent = expiryDate;
-  
-    // Hide the "Renew License" button
-    document.getElementById('renewlicense').hidden = true;
-
-    // Show the "Cancel license button"
-    document.getElementById('cancellicense').hidden = false;
-}
-/**
- * this function updates the expiry date of a software to whatever today's date as an indication of its cancellation
- */
-function cancelLicense() {
-    var table = document.getElementById("clientsTable");
-    var selectedRow = table.rows[currentSelectedRow + 1];
-
-    // Get the current date and Format it in the format of "Mon DD YYYY"
-    var today = new Date();
-    var currentDate = today.toDateString().substring(4);
-  
-    // Update the "expirydate" in the table
-    selectedRow.cells[6].textContent = currentDate;
-  
-    // Hide the "Cancel License" button
-    document.getElementById('cancellicense').hidden = true;
-
-    // Show the "Renew license button"
-    document.getElementById('renewlicense').hidden = false;
-}
-/**
  * this function blocks the client when a user clicks block client button and sets the client's status to blocked
  */
 function blockClient() {
@@ -205,49 +158,6 @@ function generateSN() {
 function showIssueLicenseForm() {
     var frm = document.getElementById("issueLicenseForm");
     frm.removeAttribute("hidden");
-}
-/**
- * this function issues licenses which includes generating a random serial number for each new license
- */
-function issuelicense() {
-    var f = document.getElementById("issueLicenseForm");
-
-    var table = document.getElementById('clientsTable');
-
-    // Get the current date and calculate the new expiry date (one year from the current date)
-    var today = new Date();
-    var future = new Date(today);
-    future.setFullYear(today.getFullYear() + 1);
-
-    // Format the current and new expiry dates as strings in the format of "Mon DD YYYY"
-    var currentDate = today.toDateString().substring(4);
-    var expiryDate = future.toDateString().substring(4);
-
-    // Create a new row and cells for the record
-    var newRow = table.insertRow(-1);
-    var cellClientId = newRow.insertCell(0);
-    var cellName = newRow.insertCell(1);
-    var cellAddress = newRow.insertCell(2);
-    var cellSoftware = newRow.insertCell(3);
-    var cellSerialNumber = newRow.insertCell(4);
-    var cellIssuedOn = newRow.insertCell(5);
-    var cellExpiresOn = newRow.insertCell(6);
-    var cellEmail = newRow.insertCell(7);
-    var cellStatus = newRow.insertCell(8);
-
-    // Populate the cells with data
-    cellClientId.innerHTML = document.getElementById('id').value;
-    cellName.innerHTML = document.getElementById('fn').value;
-    cellAddress.innerHTML = document.getElementById('adr').value;
-    cellSoftware.innerHTML = document.getElementById('sft').value;
-    cellSerialNumber.innerHTML = generateSN();
-    cellIssuedOn.innerHTML = currentDate;
-    cellExpiresOn.innerHTML = expiryDate;
-    cellEmail.innerHTML = '<a href="mailto:' + document.getElementById('em').value + '"><button type="button" id="email">Send email</button></a>';
-    cellStatus.innerHTML = 'Active';// Default status
-    
-    //hide the form now that the license has been issued
-    document.getElementById("issueLicenseForm").hidden = true;
 }
 /**
  * this function saves the sign up data of a new provider user and saves it to the database
@@ -328,4 +238,153 @@ function updateProviderDetails(event) {
   .catch(error => {
     console.error('Error:', error);
   });
+}
+
+/**
+ * this function issues licenses and saves the date/changes in to the database
+ */
+function issueLicense(event) {
+  event.preventDefault();
+
+  //=======================================calculating serial number, issue date, and expiry date=======================================
+      // Get the current date and calculate the new expiry date (one year from the current date)
+      var today = new Date();
+      var future = new Date(today);
+      future.setFullYear(today.getFullYear() + 1);
+      // Format the current and new expiry dates as strings in the format of "Mon DD YYYY"
+      var currentDate = today.toISOString().split('T')[0];
+      var expiryDate = future.toISOString().split('T')[0];
+      var serialnumber = generateSN();
+      var status = 'Active';// Default status
+  //=====================================================================================================================================
+  // Get form values
+  var cliendID = document.getElementById('id').value;
+  var clientFullName = document.getElementById('fn').value;
+  var clientAddress = document.getElementById('adr').value;
+  var clientEmail = '<a href="mailto:' + document.getElementById('em').value + '"><button type="button" id="email">Send email</button></a>';
+  var clientPhoneNumber = document.getElementById('phn').value;
+  var clientSoftware= document.getElementById('sft').value;
+
+  // Create an object with the form data
+  var toSaveInfo = {
+    CliendID : cliendID,
+    ClientFullName : clientFullName,
+    ClientAddress : clientAddress,
+    ClientEmail : clientEmail,
+    ClientPhoneNumber : clientPhoneNumber,
+    ClientSoftware : clientSoftware,
+    ClientCurrentDate : currentDate,
+    ClientExpiryDate : expiryDate,
+    ClientSerialNumber : serialnumber,
+    ClientStatus : status,
+  };
+
+  fetch('/issueLicense', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(toSaveInfo)
+  })
+  .then(response => {
+    if (response.ok) {
+      // Handle success (e.g., show a success message)
+      console.log('License successfully!');
+    } else {
+      // Handle errors
+      console.error('Error issuing license');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+/**
+ * this function updates the expiry date of a software to whatever today's date as an indication of its cancellation
+ */
+function cancelLicense(event) {
+  event.preventDefault();
+
+  var cliendID = document.getElementById('id').value;
+  // Get the current date and Format it in the format of "Mon DD YYYY"
+  var today = new Date();
+  var currentDate = today.toISOString().split('T')[0];
+  // Create an object with the form data
+  var toSaveInfo = {
+    CliendID : cliendID,
+    ClientExpiryDate : currentDate
+  };
+  fetch('/cancelLicense', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(toSaveInfo)
+  })
+  .then(response => {
+    if (response.ok) {
+      // Handle success (e.g., show a success message)
+      console.log('License cancelled!');
+    } else {
+      // Handle errors
+      console.error('Error cancelling license');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  // Hide the "Cancel License" button
+  document.getElementById('cancellicense').hidden = true;
+
+  // Show the "Renew license button"
+  document.getElementById('renewlicense').hidden = false;
+}
+/**
+ * this function updates issue and expiry dates of a software
+ *  to whatever today's date and one year from today respectivelly as an indication of its renewal
+ */
+function renewLicense(event) {
+  event.preventDefault();
+
+      var cliendID = document.getElementById('id').value;
+      // Get the current date and calculate the new expiry date (one year from the current date)
+      var today = new Date();
+      var future = new Date(today);
+      future.setFullYear(today.getFullYear() + 1);
+      // Format the current and new expiry dates as strings in the format of "Mon DD YYYY"
+      var currentDate = today.toISOString().split('T')[0];
+      var expiryDate = future.toISOString().split('T')[0];
+
+        // Create an object with the form data
+  var toSaveInfo = {
+    CliendID : cliendID,
+    ClientCurrentDate : currentDate,
+    ClientExpiryDate : expiryDate
+  };
+
+  fetch('/renewLicense', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(toSaveInfo)
+  })
+  .then(response => {
+    if (response.ok) {
+      // Handle success (e.g., show a success message)
+      console.log('License successfully renewed!');
+    } else {
+      // Handle errors
+      console.error('Error renewing license');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+  // Hide the "Renew License" button
+  document.getElementById('renewlicense').hidden = true;
+
+  // Show the "Cancel license button"
+  document.getElementById('cancellicense').hidden = false;
 }
